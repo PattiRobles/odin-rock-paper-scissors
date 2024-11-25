@@ -1,13 +1,23 @@
 //Global variables
+
 let personCounter = 0;
 let computerCounter = 0;
+let round = 0;
 
 //Functions
 
 function getPersonChoice() {
-let personChoice = prompt('Rock, paper, scissors? Choose by selecting "r", "p" or "s"').toLocaleLowerCase();
-console.log(`Person: ${personChoice}`);
+  let personChoice;
+  do {
+    personChoice = prompt('Rock, paper, scissors? Choose by selecting "r", "p" or "s"').toLowerCase();
+    if (personChoice != 'r' && personChoice != 'p' && personChoice != 's') {
+    alert('Incorrect value entered.\nPlease try again.')
+    }
+  } while (personChoice != 'r' && personChoice != 'p' && personChoice != 's')
+
+console.log(`Person choice: ${personChoice}`);
 return personChoice;
+
 }
 
 function getComputerChoice() {
@@ -21,14 +31,14 @@ function getComputerChoice() {
       computerChoice = 's';
     }
 
-  console.log(`Computer: ${computerChoice}`);
+  console.log(`Computer choice: ${computerChoice}`);
   return computerChoice;
 }
 
 function play (personChoice, computerChoice) {
   
    if (personChoice == computerChoice) {
-      console.log('Draw!') // change for alert later
+      console.log('Draw!') 
    }
    else if (
     (personChoice == 'r' && computerChoice == 's') ||
@@ -36,12 +46,10 @@ function play (personChoice, computerChoice) {
     (personChoice == 's' && computerChoice == 'p')  
   ) {
     personCounter++;
-    // console.log('one point for the human!')
    } else {
     computerCounter++;
-    // console.log('one point for the machine!')
    }
-   console.log(`Person: ${personCounter} Computer: ${computerCounter}`)
+   console.log(`Round ${++round} - Person: ${personCounter} Computer: ${computerCounter}`)
 }
 
 //START GAME
