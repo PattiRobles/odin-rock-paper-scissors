@@ -3,10 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  
   <title>Rock Paper Scissors</title>
 </head>
-<body>
-  
+<div>
+  <div class="button_container">
+  <button class="rock">
+    <img src="..\images\rock.jpg" alt="black and white rock drawing">
+  </button>
+  <button class="paper"><img src="..\images\paper.jpg" alt="black and white paper drawing"></button>
+  <button class="scissors"><img src="..\images\scissors.jpg" alt="black and white scissors drawing"></button>
+</div>
+<div class="choices_container">
+  <div class="humanChoiceDisplay"> </div>
+ 
+  <div class="score_grid">
+    <div class="grid_1">Human</div>
+    <div class="grid_2 humanCounter"> 0 </div>
+    <div class="grid_3">Computer </div>
+    <div class="grid_4 computerCounter">0 </div>
+  </div>
+  <div class="computerChoiceDisplay"></div>
+</div>
+<div class="roundDisplay">Round: 0 </div>
+<div class="winner">  </div>
+<script src="script.js" defer></script>
 </body>
 </html>

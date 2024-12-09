@@ -1,67 +1,87 @@
 //Global variables
-
-let personCounter = 0;
+let humanCounter = 0;
 let computerCounter = 0;
 let round = 0;
 
-//Functions
 
-function getPersonChoice() {
-  let personChoice;
-  do {
-    personChoice = prompt('Rock, paper, scissors? Choose by selecting "r", "p" or "s"').toLowerCase();
-    if (personChoice != 'r' && personChoice != 'p' && personChoice != 's') {
-    alert('Incorrect value entered.\nPlease try again.')
-    }
-  } while (personChoice != 'r' && personChoice != 'p' && personChoice != 's')
+//select elem from DOM
+const buttons = document.querySelectorAll('button');
+const humanChoiceDisplay = document.querySelector('.humanChoiceDisplay');
+const computerChoiceDisplay = document.querySelector('.computerChoiceDisplay');
+const humanCounterDisplay = document.querySelector('.humanCounter');
+const computerCounterDisplay = document.querySelector('.computerCounter');
+const winnerDisplay = document.querySelector('.winner');
+const roundDisplay = document.querySelector('.roundDisplay')
 
-console.log(`Person choice: ${personChoice}`);
-return personChoice;
-
-}
+//fx human choice to de done via event listener
 
 function getComputerChoice() {
   let random = Math.floor(Math.random()*3);
-  let computerChoice;
-    if (random == 0) {
-      computerChoice = 'r';
-    } else if (random == 1) {
-      computerChoice = 'p';
-    } else if (random == 2) {
-      computerChoice = 's';
-    }
-
-  console.log(`Computer choice: ${computerChoice}`);
-  return computerChoice;
+  const choices = ['rock', 'paper', 'scissors']
+  return choices[random] 
+  //much cleaner than assigning each random number a choice
 }
 
-function play (personChoice, computerChoice) {
+function resetGame() {
+humanCounter = 0;
+computerCounter = 0;
+round = 0;
+humanChoiceDisplay.textContent = '';
+computerChoiceDisplay.textContent = '';
+// humanCounterDisplay.textContent = 0 ;
+// computerCounterDisplay.textContent = '0'
+console.log('game reset');
+// winnerDisplay = '';
+}
+
+function play (humanChoice, computerChoice) {
   
-   if (personChoice == computerChoice) {
+   if (humanChoice == computerChoice) {
       console.log('Draw!') 
    }
    else if (
-    (personChoice == 'r' && computerChoice == 's') ||
-    (personChoice == 'p' && computerChoice == 'r') ||
-    (personChoice == 's' && computerChoice == 'p')  
+    (humanChoice == 'rock' && computerChoice == 'scissors') ||
+    (humanChoice == 'paper' && computerChoice == 'rock') ||
+    (humanChoice == 'scissors' && computerChoice == 'paper')  
   ) {
-    personCounter++;
+    humanCounter++;
    } else {
     computerCounter++;
    }
-   console.log(`Round ${++round} - Person: ${personCounter} Computer: ${computerCounter}`)
+   round++;
+   roundDisplay.textContent = `Round: ${round}`
+   humanCounterDisplay.textContent = humanCounter;
+   computerCounterDisplay.textContent = computerCounter;
+
+   console.log(`Round ${round} - Human: ${humanCounter} Computer: ${computerCounter}`)
+
+  //check for overall winner
+  if (humanCounter == 3 || computerCounter == 3 ) {
+  const winner = humanCounter == 3 ? 'Human' : 'Computer';
+  winnerDisplay.textContent = `${winner} wins the game!`;
+  resetGame();
+}
 }
 
-//START GAME
-do {
-  let a = getPersonChoice();
-  let b = getComputerChoice();
-  play(a, b); // variables where functions are stored
-}
-while ( personCounter < 3 && computerCounter < 3) 
+//add event listeners to game buttons
+for (let button of buttons) {
+  button.addEventListener('click', (e) => {
+    //get human choice from button selection
+    const humanChoice = e.target.offsetParent.className;
+    console.log(`Human: ${humanChoice} `)
+    humanChoiceDisplay.textContent = humanChoice;
+    winnerDisplay.textContent = '';
+    humanCounterDisplay.textContent = 0 ;
+    computerCounterDisplay.textContent = '0'
 
-if (personCounter == 3) {
-  console.log('Human wins!!')
-} else if (computerCounter == 3) {
-  console.log('Computer wins!!')
-}
+
+    //get computers choice
+    const computerChoice = getComputerChoice();
+    computerChoiceDisplay.textContent = computerChoice;
+    console.log(`Computer: ${computerChoice}`)
+
+    //play the round
+    play(humanChoice, computerChoice)
+    }
+)}
+
