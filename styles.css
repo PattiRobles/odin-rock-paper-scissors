@@ -9,12 +9,17 @@
 }
 
 button {
-  border: 3px solid black;
+  border: 5px solid black;
   height: 200px;
   width: 200px;
   padding:0;
   position: relative;
   overflow: hidden;
+}
+
+button:hover {
+  transition: 0.5s;
+  border: 6px solid rgb(238, 106, 198);
 }
 
 button img {
@@ -28,7 +33,7 @@ button img {
   margin-top: 50px;
 }
 .score_grid {
-  outline:2px solid black;
+  /* outline:2px solid black; */
   align-items: center;
   justify-content: center;
   display: grid;
@@ -42,33 +47,40 @@ button img {
 .score_grid > div {
   display: flex;
   justify-content: center;
+  min-width: 120px;
 }
 
 .grid_1 {
   grid-column: 1;
   grid-row: 1;
+  font-size: xx-large;
 }
 
 .grid_2 {
   grid-column:1;
   grid-row: 2;
+  font-size: large;
+  font-weight: 600;
 }
 
 .grid_3 {
   grid-column: 2;
   grid-row: 1;
+  font-size: xx-large;
 }
 
 .grid_4 {
   grid-column:2;
   grid-row: 2;
+  font-size: large;
+  font-weight: 600;
 }
 
 /* maybe a box that becomes visible when a player reaches a score of 3 */
 .winner {
  text-align: center;
  margin-top: 2%;
- color: blueviolet;
+ color: rgb(238, 106, 198);
  font-size: xx-large;
  font-weight: 900;
 }
@@ -76,11 +88,16 @@ button img {
 .roundDisplay {
   text-align: center;
   margin: 2%;
+  font-size: large;
+  font-weight: 600;
 }
 
 .humanChoiceDisplay, .computerChoiceDisplay {
   min-width: 100px;
   text-align: center;
   padding-top: 20px;
+  font-size: x-large;
+  font-weight: 800;
 }
+
 

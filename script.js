@@ -49,7 +49,7 @@ function play (humanChoice, computerChoice) {
     computerCounter++;
    }
    round++;
-   roundDisplay.textContent = `Round: ${round}`
+   roundDisplay.textContent = `ROUND: ${round}`
    humanCounterDisplay.textContent = humanCounter;
    computerCounterDisplay.textContent = computerCounter;
 
@@ -69,7 +69,7 @@ for (let button of buttons) {
     //get human choice from button selection
     const humanChoice = e.target.offsetParent.className;
     console.log(`Human: ${humanChoice} `)
-    humanChoiceDisplay.textContent = humanChoice;
+    humanChoiceDisplay.textContent = 'HUMAN:'+' '+ humanChoice.toUpperCase();
     winnerDisplay.textContent = '';
     humanCounterDisplay.textContent = 0 ;
     computerCounterDisplay.textContent = '0'
@@ -77,7 +77,7 @@ for (let button of buttons) {
 
     //get computers choice
     const computerChoice = getComputerChoice();
-    computerChoiceDisplay.textContent = computerChoice;
+    computerChoiceDisplay.textContent = 'COMPUTER:' + ' ' + computerChoice.toUpperCase();
     console.log(`Computer: ${computerChoice}`)
 
     //play the round
