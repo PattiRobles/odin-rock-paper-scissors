@@ -13,7 +13,7 @@ const computerCounterDisplay = document.querySelector('.computerCounter');
 const winnerDisplay = document.querySelector('.winner');
 const roundDisplay = document.querySelector('.roundDisplay')
 
-//fx human choice to de done via event listener
+//human choice to de done via event listener
 
 function getComputerChoice() {
   let random = Math.floor(Math.random()*3);
@@ -28,10 +28,8 @@ computerCounter = 0;
 round = 0;
 humanChoiceDisplay.textContent = '';
 computerChoiceDisplay.textContent = '';
-// humanCounterDisplay.textContent = 0 ;
-// computerCounterDisplay.textContent = '0'
 console.log('game reset');
-// winnerDisplay = '';
+
 }
 
 function play (humanChoice, computerChoice) {

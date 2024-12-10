@@ -76,7 +76,6 @@ button img {
   font-weight: 600;
 }
 
-/* maybe a box that becomes visible when a player reaches a score of 3 */
 .winner {
  text-align: center;
  margin-top: 2%;
